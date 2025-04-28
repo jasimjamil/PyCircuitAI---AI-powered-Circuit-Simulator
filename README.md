@@ -1,0 +1,108 @@
+# PyCircuitAI - AI-powered Circuit Simulator
+
+![PyCircuitAI Logo](https://img.shields.io/badge/PyCircuitAI-⚡-blue)
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-1.20%2B-red)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.90%2B-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+
+PyCircuitAI is an innovative, AI-powered electronic circuit simulator that allows you to design, analyze, and simulate electronic circuits using natural language commands.
+
+## 🚀 Features
+
+- **AI Circuit Generation**: Describe circuits in plain English and watch them come to life
+- **Interactive Circuit Designer**: Add, connect, and modify components with an intuitive UI
+- **Real-time Simulation**: Test your circuits with DC and AC simulations
+- **Component Library**: Access to resistors, capacitors, LEDs, voltage sources, and more
+- **Modern UI/UX**: Clean, responsive interface with dark/light mode support
+- **Export Capabilities**: Save your circuits as images or data files
+
+## 🖥️ Screenshots
+
+![PyCircuitAI Interface](https://your-image-url-here.com/screenshot1.png)
+*(Add screenshots of your application here)*
+
+## 🔧 Installation
+
+### Prerequisites
+- Python 3.8 or higher
+- Pip package manager
+
+### Local Installation
+
+```bash:README.md
+# Clone the repository
+git clone https://github.com/jasimjamil/PyCircuitAI---AI-powered-Circuit-Simulator.git
+cd PyCircuitAI---AI-powered-Circuit-Simulator
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run the application
+streamlit run app.py
+```
+
+### Environment Variables
+Create a `.env` file in the root directory with:
+```
+GEMINI_API_KEY=your_gemini_api_key
+```
+
+## 🎮 Usage
+
+1. **Launch the app**: Open your browser to http://localhost:8501
+2. **Create a new circuit**: Click the "New Circuit" button
+3. **Add components**: Use the Components panel to add elements
+4. **Use AI assistance**: Enter a circuit description in natural language
+5. **Run simulations**: Configure and run simulations from the Simulation tab
+6. **Export your work**: Save your circuit as an image or data file
+
+## 📋 Example AI Prompts
+
+Try these example prompts with the AI circuit designer:
+
+- "Create a simple LED circuit with a 9V battery and a 220 ohm resistor"
+- "Design a voltage divider that converts 9V to approximately 5V using resistors"
+- "Make a circuit with three LEDs in parallel powered by a 12V source"
+- "Create a low-pass RC filter with a cutoff frequency of about 1kHz"
+
+## 🔌 Circuit Components
+
+PyCircuitAI supports the following components:
+- Resistors
+- Capacitors
+- LEDs (various colors)
+- Voltage Sources (DC/AC)
+- Ground Connections
+- Inductors
+- Diodes
+- Transistors (BJT, MOSFET)
+
+## 📊 Simulation Capabilities
+
+- **DC Analysis**: Voltage and current values at steady state
+- **AC Analysis**: Frequency response of circuits
+- **Time Domain**: Transient behavior over time
+
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## 📜 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🙏 Acknowledgements
+
+- Built with [Streamlit](https://streamlit.io/)
+- AI powered by [Google Gemini](https://deepmind.google/technologies/gemini/)
+- Circuit simulation inspired by [SPICE](https://en.wikipedia.org/wiki/SPICE)
+
+---
+Created by [Jasim Jamil](https://github.com/jasimjamil) - Feel free to connect!
