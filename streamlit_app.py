@@ -17,10 +17,41 @@ from typing import Dict, List, Optional, Any
 from dotenv import load_dotenv
 from PIL import Image, ImageDraw, ImageFont
 from pydantic import BaseModel
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+# Add HTTPException import
+from fastapi import HTTPException
 
 # Now load environment variables
 load_dotenv()
 
+# Check if running on Streamlit Cloud
+is_streamlit_cloud = os.environ.get("STREAMLIT_CLOUD", False)
+
+# Only define FastAPI app if not on Streamlit Cloud
+if not is_streamlit_cloud:
+    # Create FastAPI application
+    app = FastAPI(title="PyCircuitAI API")
+    
+    # Add CORS middleware
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+    
+    # Define your FastAPI routes here
+    # ...
+else:
+    # Create a dummy app or alternative logic for Streamlit Cloud
+    class DummyApp:
+        def add_middleware(self, *args, **kwargs):
+            pass
+    
+    app = DummyApp()
+    
 # ------------- DATA MODELS -------------
 class ComponentType(str, Enum):
     RESISTOR = "resistor"
@@ -814,18 +845,33 @@ class GeminiCircuitProcessor:
 
 # ------------- FASTAPI BACKEND -------------
 
-# Create FastAPI application
-app = FastAPI(title="PyCircuitAI API")
+# Check if running on Streamlit Cloud
+is_streamlit_cloud = os.environ.get("STREAMLIT_CLOUD", False)
 
-# Add CORS middleware
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-
+# Only define FastAPI app if not on Streamlit Cloud
+if not is_streamlit_cloud:
+    # Create FastAPI application
+    app = FastAPI(title="PyCircuitAI API")
+    
+    # Add CORS middleware
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+    
+    # Define your FastAPI routes here
+    # ...
+else:
+    # Create a dummy app or alternative logic for Streamlit Cloud
+    class DummyApp:
+        def add_middleware(self, *args, **kwargs):
+            pass
+    
+    app = DummyApp()
+    
 # Create simulator instance
 simulator = CircuitSimulator()
 
@@ -1224,7 +1270,12 @@ def render_circuit_diagram(circuit):
 
 # Start FastAPI in a separate thread when running the Streamlit app
 def run_fastapi():
+    if is_streamlit_cloud:
+        print("Running on Streamlit Cloud - backend API cannot be started")
+        return
+        
     try:
+        import uvicorn
         uvicorn.run(app, host="127.0.0.1", port=8000)
     except Exception as e:
         print(f"Error starting FastAPI server: {e}", file=sys.stderr)
