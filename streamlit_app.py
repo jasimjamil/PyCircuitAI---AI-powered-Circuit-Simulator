@@ -1,46 +1,22 @@
-nano requirements.txt # Paste the requirements.txt content# 
-PyCircuitAI.py - Complete Circuit Simulation
-# Application Includes: FastAPI backend, Gemini API 
-# integration, and Streamlit frontend Add new files to git
-# Add, commit and push
-git add streamlit_app.py requirements.txt
-git commit -m "Create simplified entry point and update requirements"
-git push origin maingit add requirements.txt app.pyimport base64 
-import io import json import math import os 
-import time import uuid from enum import Enum 
-from typing import Dict, List, Optional, Union, 
-Any
+import sys
+# Remove git command lines and fix the broken code
+load_dotenv()
 
-import matplotlib.pyplot as plt import numpy as 
-np import requests import streamlit as st from 
-fastapi import FastAPI, HTTPException, Request, 
-Depends, File, UploadFile, Form from 
-fastapi.middleware.cors import CORSMiddleware 
-from fastapi.responses import JSONResponse from 
-fastapi.staticfiles import StaticFiles from 
-pydantic import BaseModel, Field import 
-google.generativeai as genai from 
-starlette.responses import HTMLResponse import 
-networkx as nx import pandas as pd import 
-uvicorn from PIL import Image, ImageDraw, 
-ImageFont import threading from dotenv import 
-load_dotenv import sys
-# Commit the changes Load environment variables 
-# from .env file
-git commit -m "Add application 
-files"load_dotenv()
-
-# ------------- DATA MODELS ------------- Push 
-# to GitHub
-git push origin mainclass ComponentType(str, 
-    Enum): RESISTOR = "resistor" CAPACITOR = 
-    "capacitor" INDUCTOR = "inductor" DIODE = 
-    "diode" TRANSISTOR_NPN = "transistor_npn" 
-    TRANSISTOR_PNP = "transistor_pnp" 
-    VOLTAGE_SOURCE = "voltage_source" 
-    CURRENT_SOURCE = "current_source" GROUND = 
-    "ground" OPAMP = "opamp" LED = "led" SWITCH 
-    = "switch" WIRE = "wire"
+# ------------- DATA MODELS -------------
+class ComponentType(str, Enum):
+    RESISTOR = "resistor"
+    CAPACITOR = "capacitor"
+    INDUCTOR = "inductor"
+    DIODE = "diode"
+    TRANSISTOR_NPN = "transistor_npn"
+    TRANSISTOR_PNP = "transistor_pnp"
+    VOLTAGE_SOURCE = "voltage_source"
+    CURRENT_SOURCE = "current_source"
+    GROUND = "ground"
+    OPAMP = "opamp"
+    LED = "led"
+    SWITCH = "switch"
+    WIRE = "wire"
 
 class SimulationType(str, Enum):
     DC = "dc"
