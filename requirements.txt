@@ -1,0 +1,11 @@
+streamlit
+fastapi
+uvicorn
+pillow
+pandas
+plotly
+google-generativeai
+streamlit-option-menu
+streamlit-lottie
+requests
+python-multipart
