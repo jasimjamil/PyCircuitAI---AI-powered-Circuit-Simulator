@@ -22,6 +22,9 @@ from fastapi.middleware.cors import CORSMiddleware
 # Add HTTPException import
 from fastapi import HTTPException
 
+# Add this import for Streamlit
+import streamlit as st
+
 # Now load environment variables
 load_dotenv()
 
@@ -1610,6 +1613,19 @@ def main():
 def is_server_running():
     try:
         response = requests.get("http://127.0.0.1:8000/", timeout=1)
+        return response.status_code == 200
+    except:
+        return False
+
+# Define this function before main()
+def is_server_running():
+    # When on Streamlit Cloud, return False
+    if os.environ.get("STREAMLIT_CLOUD", False):
+        return False
+        
+    # Otherwise check if local server is running
+    try:
+        response = requests.get("http://127.0.0.1:8000/")
         return response.status_code == 200
     except:
         return False
